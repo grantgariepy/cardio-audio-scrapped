@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+canvas{
+  height: 100vh;
+  background-color: rgb(63, 44, 97)
+}

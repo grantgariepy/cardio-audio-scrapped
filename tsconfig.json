@@ -22,6 +22,6 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js"
-, "src/components/Logo.jsx"  ],
+, "src/components/Logo.tsx"  ],
   "exclude": ["node_modules"]
 }

@@ -4,33 +4,23 @@ import { trpc } from "../utils/trpc";
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Logo from "../components/Logo"
+import Model from "../components/Logo"
 import { Suspense } from "react";
 
-const Wrapper = styled.div`
-  position: relative;
-  background: #1f1144;
-
-  canvas {
-    height: 1200px;
-  }
-`;
 
 const Home: NextPage = () => {
   
 
   return (
     <>
-      <Wrapper className="App">
-        <Canvas className="canvas">
-          <OrbitControls enableZoom={true} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[-2, 5, 2]} />
-          <Suspense fallback={null}>
-            <Logo />
-          </Suspense>
-        </Canvas>
-      </Wrapper>
+      <Canvas className="canvas">
+        <OrbitControls enableZoom={true} />
+        <ambientLight intensity={-.5} />
+        <directionalLight position={[-5, 10, 10]} />
+        <Suspense fallback={null}>
+          <Model />
+        </Suspense>
+      </Canvas>
     </>
   );
 };
