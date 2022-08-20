@@ -6,9 +6,11 @@ source: https://sketchfab.com/3d-models/apple-iphone-13-pro-max-4328dea00e47497d
 title: Apple iPhone 13 Pro Max
 */
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import Mesh from '@react-three/fiber'
+import { Euler, Vector3, Color } from '@react-three/fiber'
 
 type ModelType = {
   [key: string]: any;
@@ -16,22 +18,24 @@ type ModelType = {
 
 export default function Model({ ...props }) {
 
-
+  
   const group = React.useRef();
+
+  
 
   useFrame(({ clock }) => {
     const a = clock.getElapsedTime();
-    group.current.rotation.y = -a*1.5;
+    group.current.rotation.y = -a*.5
   });
 
-  const { nodes, materials }: ModelType = useGLTF("/spot.gltf");
+  const { nodes, materials }: ModelType = useGLTF("/green.gltf");
   return (
     <group ref={group} {...props} dispose={null}>
       <group position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0.5, 0]} scale={0.00001}>
+        <group rotation={[Math.PI / 2, 0.5, 0]} scale={0.00003}>
           <group scale={500}>
-            <mesh geometry={nodes.Mesh_0.geometry} material={materials['Material.003']} color={"green"} />
-            <mesh geometry={nodes.Mesh_1.geometry} material={materials['Material.002']} color={"green"} />
+            <mesh geometry={nodes.Mesh_0.geometry} material={materials['Material.003']} clearcoat={0.8} envMapIntensity={0.4}clearcoatRoughness={0} roughness={1} metalness={0}/>
+            <mesh geometry={nodes.Mesh_1.geometry} material={materials['Material.002']} position={[0, 0, -7.37]} clearcoat={0.8} envMapIntensity={0.4}clearcoatRoughness={0} roughness={1} metalness={0}/>
             
           </group>
         </group>
@@ -40,4 +44,4 @@ export default function Model({ ...props }) {
   );
 }
 
-useGLTF.preload("/spot.gltf");
+useGLTF.preload("/green.gltf");
