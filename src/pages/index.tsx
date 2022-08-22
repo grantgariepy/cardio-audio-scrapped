@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Hero from "../components/Hero";
-import Login from "../components/Login";
+import Info from "../components/Info";
+import User from "../components/User";
 
 
 
@@ -10,7 +11,8 @@ const Home: NextPage = () => {
 
   return (
     <>
-    <Login />
+    <User />
+    <Info />
     <Hero />
       
     </>

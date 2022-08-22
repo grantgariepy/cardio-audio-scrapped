@@ -1,31 +1,24 @@
-import NextAuth, { type NextAuthOptions } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
+import NextAuth from 'next-auth'
 import SpotifyProvider from "next-auth/providers/spotify";
-// Prisma adapter for NextAuth, optional and can be removed
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { prisma } from "../../../server/db/client";
-import { env } from "../../../env/server.mjs";
 
-
-export const authOptions: NextAuthOptions = {
-  // Include user.id on session
-  callbacks: {
-    session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
-      }
-      return session;
-    },
-  },
-  // Configure one or more authentication providers
-  adapter: PrismaAdapter(prisma),
+const options = {
   providers: [
+    // Passwordless / email sign in
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID,
-      clientSecret: process.env.SPOTIFY_CLIENT_SECRET
-    })
-    
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+      profile(profile) {
+        return {
+          id: profile.id,
+          name: profile.display_name,
+          email: profile.email,
+          image: profile.images?.[0]?.url
+        }
+      },
+    }),
   ],
-};
+  // Optional SQL or MongoDB database to persist users
+  database: process.env.DATABASE_URL
+}
 
-export default NextAuth(authOptions);
+export default (req, res) => NextAuth(req, res, options);
