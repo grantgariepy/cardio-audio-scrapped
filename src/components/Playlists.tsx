@@ -1,6 +1,7 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useState } from 'react';
 
+
 export default function Playlists() {
   const { data: session } = useSession();
   const [list, setList] = useState([]);
@@ -16,12 +17,18 @@ export default function Playlists() {
       <>
         
         <button onClick={() => getMyPlaylists()}>Get all my playlists</button>
+        <div className='overlord' style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px',}}>
         {list.map((item) => (
-          <div key={item.id}>
-            <h1>{item.name}</h1>
-            <img src={item.images[0]?.url} width='100' />
-          </div>
+
+            <div className='card'>
+
+              <div key={item.id} className='grid'>
+                <h1 className='title'>{item.name}</h1>
+                <img src={item.images[0]?.url} width='100' />
+              </div>
+            </div>
         ))}
+        </div>
       </>
     );
   }
