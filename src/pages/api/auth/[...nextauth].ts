@@ -7,7 +7,7 @@ const options = {
     // Passwordless / email sign in
     SpotifyProvider({
       authorization:
-        'https://accounts.spotify.com/authorize?scope=user-read-email',
+        'https://accounts.spotify.com/authorize?scope=user-top-read',
       clientId: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
       // profile(profile) {
@@ -29,7 +29,6 @@ const options = {
     },
     async session(session, user) {
       session.user = user;
-      console.log([session])
       return session;
     },
   },

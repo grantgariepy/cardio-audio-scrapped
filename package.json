@@ -20,6 +20,7 @@
     "@trpc/server": "^9.27.0",
     "next": "12.2.5",
     "next-auth": "^4.10.3",
+    "next-mdx-remote": "^4.1.0",
     "postprocessing": "^6.28.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -27,6 +28,7 @@
     "spotify-web-api-node": "^5.0.2",
     "styled-components": "^5.3.5",
     "superjson": "^1.9.1",
+    "swr": "^1.3.0",
     "three": "^0.143.0",
     "zod": "^3.18.0"
   },
