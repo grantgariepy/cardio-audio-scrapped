@@ -1,6 +1,6 @@
 import React from 'react'
 import { signIn, signOut, useSession  } from "next-auth/react";
-import {getAccessToken} from "../utils/spotify"
+
 
 
 
@@ -23,7 +23,7 @@ const User = () => {
               hi  {session.user?.name} {session.user?.id}
             </p>
             <img src={session.user?.image} alt="" />
-            <button onClick={getAccessToken}></button>
+            <button ></button>
 
             <button onClick={() => signOut()}>Logout</button>
           </div>
