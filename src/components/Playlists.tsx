@@ -14,9 +14,7 @@ export default function Playlists() {
   if (session) {
     return (
       <>
-        Signed in as {session?.token?.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-        <hr />
+        
         <button onClick={() => getMyPlaylists()}>Get all my playlists</button>
         {list.map((item) => (
           <div key={item.id}>

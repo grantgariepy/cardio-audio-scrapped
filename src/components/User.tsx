@@ -20,10 +20,10 @@ const User = () => {
         {session ? (
           <div>
             <p>
-              hi  {session.user?.name} {session.user?.id}
+              hi  {session?.token?.name} {session?.token?.email}
             </p>
-            <img src={session.user?.image} alt="" />
-            <button ></button>
+            <img src={session?.token?.picture} alt="" />
+           
 
             <button onClick={() => signOut()}>Logout</button>
           </div>
