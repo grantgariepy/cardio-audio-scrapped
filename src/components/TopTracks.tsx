@@ -25,8 +25,9 @@ export default function TopTracks() {
 
               <div key={item.id} className='grid'>
                 <h1 className='title'>{item.name}</h1>
-                
-                {/* <img src={item.images[0]?.url} width='100' /> */}
+                {/* <h1 className='title'>{item.images[0].url}</h1> */}
+                {/* <h1 className='title'>{item.images[1].height}</h1>*/}
+                <img src={item.images[0].url} width='100' /> 
               </div>
             </div>
         ))}
