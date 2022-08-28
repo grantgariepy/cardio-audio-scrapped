@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
 import Model from "../components/Logo"
 import { Suspense } from "react";
+import User from "./User";
 
 
 const Hero = () => {

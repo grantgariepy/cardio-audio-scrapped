@@ -1,5 +1,7 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useState } from 'react';
+import { number } from 'zod';
+import Track from './Track';
 
 
 
@@ -13,32 +15,31 @@ export default function TopTracks() {
     setList(items);
   };
 
+  
+
+  
+  const topTracks = list.map((item, index) =>
+      <div key={index} className={index.toString()}>
+        <h1 className='title'>{index}</h1>
+        <h1 className='title'>{item.album.artists[0].name}</h1>
+        <h1 className='title'>{item.album.name}</h1>
+        <img src={item.album.images[0].url} width='1000' /> 
+      </div>
+    
+  );
+
+
   if (session) {
     return (
       <>
-        
         <button onClick={() => getTopTracks()}>Get my top tracks</button>
-        <div className='overlord' style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '10px',}}>
-        {list.map((item) => (
-
-            <div className='card'>
-
-              <div key={item.id} className='grid'>
-                
-                <h1 className='title'>{item.album.artists[0].name} - </h1>
-                <h1 className='title'>{item.album.name}</h1>
-                <img src={item.album.images[0].url} width='100' /> 
-              </div>
-            </div>
-        ))}
-        </div>
+        {topTracks}
       </>
     );
   }
   return (
     <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      
     </>
   );
 }

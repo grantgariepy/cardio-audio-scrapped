@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { signIn, signOut, useSession  } from "next-auth/react";
+import { Canvas } from '@react-three/fiber';
+import Model from './Logo';
+import { Environment } from '@react-three/drei';
 
 
 
@@ -33,6 +36,15 @@ const User = () => {
           </div>
         )}
       </main>
+      <div className='heroContainer'>
+      <Canvas className="canvas"  camera={{ position: [0, 0, 5], fov: 45 }}>
+        <spotLight intensity={0.5} angle={0.2} penumbra={1} position={[0, 15, 10]} />
+        <Suspense fallback={null}>
+          <Model />
+          <Environment preset="warehouse" />
+        </Suspense>
+      </Canvas>
+      </div>
     </>
   )
 }
