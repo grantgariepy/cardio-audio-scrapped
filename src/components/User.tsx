@@ -18,32 +18,20 @@ const User = () => {
 
   return (
     <>
-      <main>
-        <h1>Spotify</h1>
+      <div className='infoContainer'>
         {session ? (
-          <div>
-            <p>
-              hi  {session?.token?.name} {session?.token?.email}
-            </p>
-            <img src={session?.token?.picture} alt="" />
-           
-
-            <button onClick={() => signOut()}>Logout</button>
+          <div className='infoLoggedIn'>
+            <h1 className='greeting'>
+              hi  {session?.token?.name}
+            </h1>
+            <img className='userImage' src={session?.token?.picture} alt="" />
+            <button className='logoutButton' onClick={() => signOut()}>Logout</button>
           </div>
         ) : (
-          <div>
+          <div className='infoLoggedOut'>
             <button onClick={() => signIn("spotify")}>Login with Spotify</button>
           </div>
         )}
-      </main>
-      <div className='heroContainer'>
-      <Canvas className="canvas"  camera={{ position: [0, 0, 5], fov: 45 }}>
-        <spotLight intensity={0.5} angle={0.2} penumbra={1} position={[0, 15, 10]} />
-        <Suspense fallback={null}>
-          <Model />
-          <Environment preset="warehouse" />
-        </Suspense>
-      </Canvas>
       </div>
     </>
   )

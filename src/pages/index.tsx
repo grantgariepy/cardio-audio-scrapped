@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-    <Heart />
+    <Hero />
     <User />
     <Playlists />
     <TopTracks />

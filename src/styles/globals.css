@@ -2,20 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-.heroContainer{
-  width: 50vw;
-  height: 50vh;
-}
-
-.heart{
-  height: 100vh;
-}
-
 [class="0"] {
   color: red;
-  height: 100vh;
 }
 [class="1"] {
   color: blue;
