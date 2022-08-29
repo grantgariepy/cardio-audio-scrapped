@@ -17,6 +17,8 @@ export default function TopTracks() {
   
   const topTracks = list.map((item, index) =>
       <div key={index} className={index.toString()}>
+        
+        <a href={item.album.external_urls.spotify} target="__blank">Link</a>
         <h1 className='title'>{item.album.artists[0].name}</h1>
         <h1 className='title'>{item.album.name}</h1>
         <img src={item.album.images[0].url}  /> 
