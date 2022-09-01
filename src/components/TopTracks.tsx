@@ -1,5 +1,6 @@
 import { useSession} from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { BsSpotify } from 'react-icons/bs'
 
 export default function TopTracks() {
   const { data: session } = useSession();
@@ -18,10 +19,29 @@ export default function TopTracks() {
   const topTracks = list.map((item, index) =>
       <div key={index} className={index.toString()}>
         
-        <a href={item.album.external_urls.spotify} target="__blank">Link</a>
-        <h1 className='title'>{item.album.artists[0].name}</h1>
-        <h1 className='title'>{item.album.name}</h1>
-        <img src={item.album.images[0].url}  /> 
+        <div className='text'>
+          <div className='iconButton'>
+            <ul> 
+              <li>
+                <a href={item.album.external_urls.spotify} target="__blank">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span>
+                    <BsSpotify />
+                  </span>
+                </a> 
+              </li>
+            </ul>  
+          </div> 
+          
+          <h1 className='title'>{item.album.artists[0].name}</h1>
+          <h1 className='title'> by {item.album.name}</h1>
+        </div>
+        <div className="image">
+          <img src={item.album.images[0].url}  /> 
+        </div>
       </div>
   );
 
