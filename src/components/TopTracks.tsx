@@ -10,11 +10,13 @@ export default function TopTracks() {
     const res = await fetch('/api/topTracks');
     const { items } = await res.json();
     setList(items);
+    console.log({items})
   };
 
   useEffect(()=>{
     getTopTracks();
   }, [])
+  
   
   const topTracks = list.map((item, index) =>
       <div key={index} className={index.toString()}>
@@ -36,8 +38,8 @@ export default function TopTracks() {
             </ul>  
           </div> 
           
-          <h1 className='title'>{item.album.artists[0].name}</h1>
-          <h1 className='title'> by {item.album.name}</h1>
+          <h1 className='title'>{item.name}</h1>
+          <h1 className='title'> by {item.artists[0].name}</h1>
         </div>
         <div className="image">
           <img src={item.album.images[0].url}  /> 
