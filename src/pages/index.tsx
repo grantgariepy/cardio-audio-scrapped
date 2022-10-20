@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     <>
     <Hero />
     <User />
-    <Playlists />
+    {/* <Playlists /> */}
     <TopTracks />
       
     </>
