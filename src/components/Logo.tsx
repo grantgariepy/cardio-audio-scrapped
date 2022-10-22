@@ -6,18 +6,17 @@ source: https://sketchfab.com/3d-models/apple-iphone-13-pro-max-4328dea00e47497d
 title: Apple iPhone 13 Pro Max
 */
 
-import React, { useRef, useEffect, useMemo } from "react";
-import { useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import React, { useRef, useEffect, useMemo } from 'react'
+import { useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 import Mesh from '@react-three/fiber'
 import { useThree } from '@react-three/fiber'
-import { EffectComposer } from "postprocessing";
-import { RenderPass } from "postprocessing";
+import { EffectComposer } from 'postprocessing'
+import { RenderPass } from 'postprocessing'
 // import  UnrealBloomPass  from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 
-
 type ModelType = {
-  [key: string]: any;
+  [key: string]: any
 }
 
 // const { scene, gl, size, camera } = useThree();
@@ -33,39 +32,34 @@ type ModelType = {
 //   threshold: 0.4,
 // };
 
-
-
 export default function Model({ ...props }) {
-
-  
-  const group = React.useRef();
-
-  
-  
+  const group = React.useRef()
 
   useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    group.current.rotation.y = -a*.5
-   
-  });
+    const a = clock.getElapsedTime()
+    group.current.rotation.y = -a * 0.5
+  })
 
-  
-
-  const { nodes, materials }: ModelType = useGLTF("/logo.gltf");
+  const { nodes, materials }: ModelType = useGLTF('/logo.gltf')
   return (
-    <group ref={group} {...props}  dispose={null}>
+    <group ref={group} {...props} dispose={null}>
       <group position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0.5, 0]} scale={0.00003} >
-          <group scale={500} >
-          <mesh   
-            geometry={nodes.Mesh_1.geometry} 
-            material={materials['Material.001']}/>
-            
+        <group rotation={[Math.PI / 2, 0.5, 0]} scale={0.00003}>
+          <group scale={500}>
+            <mesh
+              geometry={nodes.Mesh_1.geometry}
+              material={materials['Material.001']}
+              envMapIntensity={0.4}
+              clearcoat={0.8}
+              clearcoatRoughness={0}
+              roughness={1}
+              metalness={0}
+            />
           </group>
         </group>
       </group>
     </group>
-  );
+  )
 }
 
-useGLTF.preload("/logo.gltf");
+useGLTF.preload('/logo.gltf')
