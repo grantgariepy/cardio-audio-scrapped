@@ -13,24 +13,19 @@ import Mesh from '@react-three/fiber'
 import { useThree } from '@react-three/fiber'
 import { EffectComposer } from 'postprocessing'
 import { RenderPass } from 'postprocessing'
+import { any } from 'zod'
 // import  UnrealBloomPass  from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 
 type ModelType = {
   [key: string]: any
 }
 
-// const { scene, gl, size, camera } = useThree();
-
-// const aspect = useMemo(() => new THREE.Vector2(size.width, size.height), [
-//   size,
-// ]);
-
-// const bloom = {
-//   resolution: aspect,
-//   strength: 0.6,
-//   radius: 0.01,
-//   threshold: 0.4,
-// };
+type GroupType = {
+  group?: {
+    current?: any
+  }
+}
+const g1: GroupType = { group: { current: '' } }
 
 export default function Model({ ...props }) {
   const group = React.useRef()
