@@ -1,8 +1,5 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { Canvas } from '@react-three/fiber'
-import Model from './Logo'
-import { Environment } from '@react-three/drei'
 
 const User = () => {
   const { data: session, status } = useSession()

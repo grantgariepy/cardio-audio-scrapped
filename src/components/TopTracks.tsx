@@ -1,6 +1,5 @@
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { BsSpotify } from 'react-icons/bs'
 import Blurb from './Blurb'
 
 export default function TopTracks() {

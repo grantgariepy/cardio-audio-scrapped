@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  @apply bg-neutral-900 text-neutral-100
+}
 .loggedOutMsg{
   font-size: 4rem;
   font-weight: bold;
@@ -9,17 +12,20 @@
 .blurb1{
   font-size: 4rem;
   font-weight: bold;
-  color: black;
+  
 }
 .title{
   font-size: 4rem;
   font-weight: bold;
 }
 .hero{
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
   z-index: -99;
-  position: fixed;
+  /* position: fixed; */
   /* mix-blend-mode: color-burn; */
 }
 .text{
@@ -38,7 +44,7 @@
 }
 
 [class="0"] {
-  color: red;
+ 
   display: flex;
   align-items: center;
   height: 100vh;
@@ -46,7 +52,7 @@
   align-items: center;
 }
 [class="1"] {
-  color: red;
+  
   display: flex;
   align-items: center;
   height: 100vh;
@@ -54,21 +60,23 @@
   align-items: center;
 }
 [class="2"] {
-  color: red;
+  
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 [class="3"] {
-  color: red;
+  
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 [class="4"] {
-  color: red;
+  
   display: flex;
   align-items: center;
   height: 100vh;
