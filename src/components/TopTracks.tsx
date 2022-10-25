@@ -55,7 +55,7 @@ export default function TopTracks() {
           </div>
         </div>
         <div className="scrollButtonContainer" id="scroll">
-          <Link to={(index - 1).toString()}>
+          <Link to={(index - 1).toString()} smooth={true}>
             <button className="scrollButton">V</button>
           </Link>
         </div>

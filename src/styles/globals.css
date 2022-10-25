@@ -8,12 +8,16 @@ body{
 .scrollButtonContainer{
   display: flex;
   justify-content: center;
+  align-items: center;
+  /* background-color: #fff; */
+  height: 20vh;
 }
 .scrollButton{
   background-color: #52E19F;
   width: fit-content;
   padding: 30px;
   border-radius: 60px;
+  color: black;
   
 }
 .loggedOutMsg{
@@ -58,7 +62,7 @@ body{
  
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
@@ -66,7 +70,7 @@ body{
   
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
@@ -74,7 +78,7 @@ body{
   
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
@@ -82,7 +86,7 @@ body{
   
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
@@ -90,7 +94,7 @@ body{
   
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
