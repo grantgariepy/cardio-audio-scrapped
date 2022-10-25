@@ -27,7 +27,7 @@ const options = {
       }
       return token;
     },
-    async session(session, user) {
+    async session(session, user, token) {
       session.user = user;
       return session;
     },
