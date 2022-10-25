@@ -30,7 +30,7 @@ export const getUsersPlaylists = async (refresh_token) => {
   });
 };
 
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5&offset=0`;
+const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5&offset=0`;
 
 export const getTopTracks = async (refresh_token) => {
   const { access_token } = await getAccessToken(refresh_token);

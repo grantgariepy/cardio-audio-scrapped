@@ -5,6 +5,17 @@
 body{
   @apply bg-neutral-900 text-neutral-100
 }
+.scrollButtonContainer{
+  display: flex;
+  justify-content: center;
+}
+.scrollButton{
+  background-color: #52E19F;
+  width: fit-content;
+  padding: 30px;
+  border-radius: 60px;
+  
+}
 .loggedOutMsg{
   font-size: 4rem;
   font-weight: bold;
@@ -83,6 +94,7 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 
 ul {
   position: relative;
