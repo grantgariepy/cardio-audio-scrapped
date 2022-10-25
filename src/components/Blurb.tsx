@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Blurb = (props) => {
+const Blurb = (props: any) => {
   switch (props.rank) {
     case 0:
       return <div className="blurb1">Last but not least, your #1 song is:</div>
