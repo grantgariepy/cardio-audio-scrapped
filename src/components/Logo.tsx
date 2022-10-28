@@ -28,9 +28,9 @@ type GroupType = {
 const g1: GroupType = { group: { current: '' } }
 
 export default function Model({ ...props }) {
-  const group = React.useRef()
+  const group: any = React.useRef()
 
-  useFrame(({ clock }) => {
+  useFrame(({ clock }: { clock: any }) => {
     const a = clock.getElapsedTime()
     group.current.rotation.y = -a * 0.5
   })
