@@ -1,43 +1,28 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
-const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
-const PLAYLISTS_ENDPOINT = 'https://api.spotify.com/v1/me/playlists';
+const client_id = process.env.SPOTIFY_CLIENT_ID
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET
+const authorization_code = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 
-
-const getAccessToken = async (refresh_token) => {
-  const response = await fetch(TOKEN_ENDPOINT, {
+const getAccessToken = async (refresh_token: string) => {
+  const response = await fetch(`https://accounts.spotify.com/api/token`, {
     method: 'POST',
     headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: authorization_code,
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: new URLSearchParams({
       grant_type: 'refresh_token',
-      refresh_token,
-    }),
-  });
+      refresh_token
+    })
+  })
 
-  return response.json();
-};
+  return response.json()
+}
 
-export const getUsersPlaylists = async (refresh_token) => {
-  const { access_token } = await getAccessToken(refresh_token);
-  return fetch(PLAYLISTS_ENDPOINT, {
+export const getTopTracks = async (refresh_token: string) => {
+  const { access_token } = await getAccessToken(refresh_token)
+  return fetch('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5&offset=0https://api.spotify.com/v1/me/playlists', {
     headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-};
-
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5&offset=0`;
-
-export const getTopTracks = async (refresh_token) => {
-  const { access_token } = await getAccessToken(refresh_token);
- 
-  return fetch(TOP_TRACKS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-};
+      Authorization: `Bearer ${access_token}`
+    }
+  })
+}

@@ -1,39 +1,26 @@
+import NextAuth, { User, type NextAuthOptions } from "next-auth";
+import SpotifyProvider, { SpotifyProfile } from "next-auth/providers/spotify";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-import NextAuth from 'next-auth'
-import SpotifyProvider from "next-auth/providers/spotify";
-
-const options = {
+export const authOptions: NextAuthOptions = {
+  // Configure one or more authentication providers
   providers: [
-    // Passwordless / email sign in
     SpotifyProvider({
       authorization:
-        'https://accounts.spotify.com/authorize?scope=user-top-read',
-      clientId: process.env.SPOTIFY_CLIENT_ID,
-      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-      // profile(profile) {
-      //   return {
-      //     id: profile.id,
-      //     name: profile.display_name,
-      //     email: profile.email,
-      //     image: profile.images?.[0]?.url
-      //   }
-      // },
-    }),
+      'https://accounts.spotify.com/authorize?scope=user-top-read',
+      clientId: process.env.SPOTIFY_CLIENT_ID as string,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET as string,
+    })
   ],
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({token, account}) {
       if (account) {
         token.accessToken = account.refresh_token;
       }
       return token;
     },
-    async session(session, user, token) {
-      session.user = user;
-      return session;
-    },
   },
-  // Optional SQL or MongoDB database to persist users
-  database: process.env.DATABASE_URL
-}
+  secret: process.env.NEXT_AUTH_SECRET as string,
+};
 
-export default (req, res) => NextAuth(req, res, options);
+export default NextAuth(authOptions);
